@@ -11,6 +11,13 @@ targetCompatibility = 1.7
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'net.saliman:gradle-cobertura-plugin:2.2.2'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.3.1'
+    }
+}
 repositories {
   maven {
     url 'https://maven-central.storage.googleapis.com'
@@ -19,6 +26,17 @@ repositories {
   jcenter()
   mavenCentral()
 }
+
+apply plugin: 'jacoco'
+apply plugin: 'coveralls'
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
 dependencies {
     compile group: 'joda-time', name: 'joda-time', version:'2.9.4'
     compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
