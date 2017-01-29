@@ -14,10 +14,10 @@ tasks.withType(JavaCompile) {
 buildscript {
     repositories { jcenter() }
     dependencies {
-        classpath 'net.saliman:gradle-cobertura-plugin:2.2.2'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.3.1'
     }
 }
+
 repositories {
   maven {
     url 'https://maven-central.storage.googleapis.com'
@@ -33,7 +33,6 @@ apply plugin: 'coveralls'
 jacocoTestReport {
     reports {
         xml.enabled = true
-        html.enabled = true
     }
 }
 
