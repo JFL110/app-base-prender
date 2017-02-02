@@ -22,10 +22,6 @@ public final class StringRenderNode implements RenderStream {
 	public String getString() {
 		return string;
 	}
-	
-	public Iterable<? extends RenderNode> children() {
-		return Collections.emptyList();
-	}
 
 	@Override
 	public void write(Writer writer) throws IOException {
