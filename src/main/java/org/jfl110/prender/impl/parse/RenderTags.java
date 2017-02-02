@@ -9,11 +9,11 @@ import org.jfl110.prender.api.parse.RenderTag;
 import org.jfl110.prender.api.parse.RenderTagBuilder;
 import org.jfl110.prender.api.render.RenderNodeSpace;
 
-import com.google.appengine.repackaged.com.google.common.base.Optional;
-import com.google.appengine.repackaged.com.google.common.collect.Lists;
 import com.google.common.base.Function;
+import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 public class RenderTags {
 

@@ -17,8 +17,8 @@ import org.jfl110.prender.api.parse.RenderTag;
 import org.jfl110.prender.api.render.RenderNodeSpace;
 import org.jfl110.prender.impl.StringRenderNode;
 
-import com.google.appengine.repackaged.com.google.common.collect.Iterables;
 import com.google.common.base.Optional;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
