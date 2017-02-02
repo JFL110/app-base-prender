@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.jfl110.prender.api.CollectionRenderNode;
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.render.RenderNodeSpace;
 import org.jfl110.prender.api.render.RenderService;

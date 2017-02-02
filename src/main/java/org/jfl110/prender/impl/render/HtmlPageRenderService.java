@@ -7,6 +7,7 @@ import java.util.Collections;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.jfl110.prender.api.HtmlPageRenderNode;
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.parse.HtmlParsingService;
 import org.jfl110.prender.api.render.RenderService;

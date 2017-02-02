@@ -1,7 +1,7 @@
 package org.jfl110.prender.impl.parse;
 
+import static org.jfl110.prender.api.StringRenderNodes.string;
 import static org.jfl110.prender.api.render.RenderNodeSpace.renderNodeSpace;
-import static org.jfl110.prender.impl.StringRenderNode.string;
 
 import java.io.IOException;
 import java.util.List;

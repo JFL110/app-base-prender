@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.jfl110.prender.TestingUtils.assertAbsent;
 import static org.jfl110.prender.TestingUtils.matchingAttribute;
-import static org.jfl110.prender.impl.StringRenderNode.string;
+import static org.jfl110.prender.api.StringRenderNodes.string;
 import static org.jfl110.prender.impl.parse.CssCompressionParseTransformation.COMPRESSED_MARKER;
 import static org.jfl110.prender.impl.parse.RenderTags.attribute;
 import static org.junit.Assert.assertEquals;

@@ -2,7 +2,7 @@ package org.jfl110.prender.impl.parse;
 
 import static com.google.common.collect.Iterables.any;
 import static com.google.common.collect.Iterables.find;
-import static org.jfl110.prender.impl.StringRenderNode.string;
+import static org.jfl110.prender.api.StringRenderNodes.string;
 import static org.jfl110.prender.impl.parse.RenderTags.copyOfAttributes;
 import static org.jfl110.prender.impl.parse.RenderTags.isAttribute;
 

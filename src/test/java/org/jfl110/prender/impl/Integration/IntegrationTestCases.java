@@ -1,6 +1,6 @@
 package org.jfl110.prender.impl.Integration;
 
-import static org.jfl110.prender.impl.render.HtmlPageRenderNode.htmlPage;
+import static org.jfl110.prender.api.HtmlPageRenderNode.htmlPage;
 
 class IntegrationTestCases {
 

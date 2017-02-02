@@ -1,6 +1,4 @@
-package org.jfl110.prender.impl.render;
-
-import org.jfl110.prender.api.RenderNode;
+package org.jfl110.prender.api;
 
 public final class HtmlPageRenderNode implements RenderNode{
 	
@@ -17,6 +15,5 @@ public final class HtmlPageRenderNode implements RenderNode{
 	
 	public String pageName() {
 		return pageName;
-	}
-	
+	}	
 }

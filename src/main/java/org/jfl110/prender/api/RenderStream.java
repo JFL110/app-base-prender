@@ -10,5 +10,12 @@ import java.io.Writer;
  * @author JFL110
  */
 public interface RenderStream extends RenderNode{
+	
+	/**
+	 * Writes the contents of this RenderStream
+	 * 
+	 * @param writer The Writer to write to
+	 * @throws IOException
+	 */
 	void write(Writer writer) throws IOException;
 }

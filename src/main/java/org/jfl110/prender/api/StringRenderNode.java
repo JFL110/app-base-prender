@@ -1,11 +1,7 @@
-package org.jfl110.prender.impl;
+package org.jfl110.prender.api;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collections;
-
-import org.jfl110.prender.api.RenderNode;
-import org.jfl110.prender.api.RenderStream;
 
 /**
 * A RenderStream that wraps a String and writes it to a Writer.
@@ -16,18 +12,10 @@ public final class StringRenderNode implements RenderStream {
 
 	private final String string;
 
-	private StringRenderNode(String string) {
+	StringRenderNode(String string) {
 		this.string = string;
 	}
 	
-	
-	/**
-	* Creates a new StringRenderNode
-	*/
-	public static StringRenderNode string(String string) {
-		return new StringRenderNode(string);
-	}
-
 	
 	/**
 	* Gets the String that will be written by write(Writer).

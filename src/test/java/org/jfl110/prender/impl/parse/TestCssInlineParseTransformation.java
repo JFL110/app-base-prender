@@ -21,10 +21,10 @@ import javax.servlet.ServletContext;
 
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.SerializableRenderNode;
+import org.jfl110.prender.api.StringRenderNode;
 import org.jfl110.prender.api.cache.CacheService;
 import org.jfl110.prender.api.cache.TestingCacheService;
 import org.jfl110.prender.api.parse.RenderTag;
-import org.jfl110.prender.impl.StringRenderNode;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,12 +1,10 @@
-package org.jfl110.prender.impl.render;
+package org.jfl110.prender.api;
 
 import static org.jfl110.prender.api.render.RenderNodeSpace.renderNodeSpace;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.jfl110.prender.api.RenderNode;
-import org.jfl110.prender.api.RenderNodeWithChildren;
 import org.jfl110.prender.api.render.RenderNodeSpace;
 
 import com.google.common.collect.Lists;

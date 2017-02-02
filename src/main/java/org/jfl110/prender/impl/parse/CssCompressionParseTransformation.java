@@ -11,11 +11,11 @@ import javax.servlet.ServletContext;
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.RenderStream;
 import org.jfl110.prender.api.SerializableRenderNode;
+import org.jfl110.prender.api.StringRenderNodes;
 import org.jfl110.prender.api.parse.CssCompressor;
 import org.jfl110.prender.api.parse.ParseTransformation;
 import org.jfl110.prender.api.parse.RenderTag;
 import org.jfl110.prender.api.render.RenderNodeSpace;
-import org.jfl110.prender.impl.StringRenderNode;
 
 import com.google.common.base.Optional;
 import com.google.common.collect.Iterables;
@@ -81,7 +81,7 @@ class CssCompressionParseTransformation implements ParseTransformation{
 		return Optional.<SerializableRenderNode>of(
 				RenderTags.tag(CSS_TAG_NAME)
 				.addAttributes(RenderTags.copyOfAttributes(input.attributes()))
-				.addChild(StringRenderNode.string(compressedCss.toString()))
+				.addChild(StringRenderNodes.string(compressedCss.toString()))
 				.build());
 	}
 }

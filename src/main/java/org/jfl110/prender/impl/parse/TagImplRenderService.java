@@ -11,9 +11,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.StringRenderNodes;
 import org.jfl110.prender.api.parse.RenderAttribute;
 import org.jfl110.prender.api.render.RenderService;
-import org.jfl110.prender.impl.StringRenderNode;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -65,12 +65,12 @@ public class TagImplRenderService implements RenderService<RenderTagImpl> {
 
 		frontTagBuilder.append(TAG_CLOSE);
 
-		output.add(StringRenderNode.string(frontTagBuilder.toString()));
+		output.add(StringRenderNodes.string(frontTagBuilder.toString()));
 		renderInnards(tag, output);
 
 		StringBuilder endTagBuilder = new StringBuilder(TAG_OPEN_SLASH).append(tag.tagName()).append(TAG_CLOSE);
 
-		output.add(StringRenderNode.string(endTagBuilder.toString()));
+		output.add(StringRenderNodes.string(endTagBuilder.toString()));
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class TagImplRenderService implements RenderService<RenderTagImpl> {
 		StringBuilder frontTagBuilder = new StringBuilder(TAG_OPEN).append(tag.tagName());
 		addAttributes(tag.attributes(), frontTagBuilder);
 		frontTagBuilder.append(TAG_CLOSE_SLASH);
-		output.add(StringRenderNode.string(frontTagBuilder.toString()));
+		output.add(StringRenderNodes.string(frontTagBuilder.toString()));
 	}
 
 	/**
