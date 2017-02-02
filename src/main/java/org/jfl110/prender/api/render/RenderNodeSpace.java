@@ -5,7 +5,7 @@ import org.jfl110.prender.api.RenderNode;
 import com.google.common.base.Function;
 
 /**
- * Space for a RenderNode to allow child swapping
+ * Wrapper for a RenderNode to allow child swapping
  * 
  * @author JFL110
  */
