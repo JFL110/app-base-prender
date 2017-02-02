@@ -24,8 +24,6 @@ import com.google.inject.Provider;
 
 class CssCompressionParseTransformation implements ParseTransformation{
 	
-	// TODO prefix css with something to stop further compressions
-
 	private static final int MAX_CHARS_PER_LINE = 1000;
 	private static final String CSS_TAG_NAME = "style";
 	private static final String HREF_ATTRIBUTE_NAME = "href";
