@@ -10,6 +10,16 @@ import com.google.common.base.Optional;
 
 /**
  * Transformation to apply to RenderTags during parsing.
+ * 
+ * If the input is not applicable for the transformation then transform
+ * must return Optional.absent(). 
+ *
+ * The transformation must NOT be idempotent, meaning:
+ * f(f(x)) = Optional.absent()  or f(f(f(x))) = Optional.absent() 
+ * to some resonable limit of recursive calls.
+ *
+ * The result of the transformation may be cached and so should not include
+ * dynamic data. See RenderTransformation for the inclusion of dynamic data.
  *
  * @author JFL110
  */
