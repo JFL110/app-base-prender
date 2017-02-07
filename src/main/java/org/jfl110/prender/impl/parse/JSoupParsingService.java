@@ -6,6 +6,7 @@ import java.io.InputStream;
 import javax.servlet.ServletContext;
 
 import org.jfl110.prender.api.parse.HtmlParseOptions;
+import org.jfl110.prender.api.resources.InputStreamWithPath;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,7 +18,7 @@ import com.google.inject.Provider;
 @ImplementedBy(JSoupParsingService.JSoupParsingServiceImpl.class)
 interface JSoupParsingService {
 	
-	Element parseLocalFile(String path, ServletContext context,HtmlParseOptions options) throws IOException;
+	Element parseStream(InputStreamWithPath page, ServletContext context,HtmlParseOptions options) throws IOException;
 	
 	class JSoupParsingServiceImpl implements JSoupParsingService{
 		
@@ -32,20 +33,9 @@ interface JSoupParsingService {
 
 		
 		@Override
-		public Element parseLocalFile(String path, ServletContext context,HtmlParseOptions options) throws IOException {
-			InputStream inputStream = context.getResourceAsStream(path);
-		
-			if(inputStream == null){
-				throw new IOException("Null input stream for ["+path+"]");
-			}
-			
+		public Element parseStream(InputStreamWithPath page, ServletContext context,HtmlParseOptions options) throws IOException {
 			configureDetaultOptions(options);
-			
-			if(options.isBodyOnly()){
-				return parseBodyOnly(inputStream,path,options);
-			}
-			
-			return parseWholeDocument(inputStream,path,options);
+			return options.isBodyOnly() ? parseBodyOnly(page.getInputStream(),page.getPath(),options) : parseWholeDocument(page.getInputStream(),page.getPath(),options);
 		}
 		
 		/**

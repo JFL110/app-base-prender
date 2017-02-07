@@ -27,8 +27,8 @@ class DefaultRenderServiceResolver implements RenderServiceResolver {
 	}
 
 	private void buildMap() {
-		for (RenderService<? extends RenderNode> serviceProvider : renderServices) {
-			serviceMap.put(serviceProvider.getRenderNodeType(), serviceProvider);
+		for (RenderService<? extends RenderNode> service : renderServices) {
+			serviceMap.put(service.getRenderNodeType(), service);
 		}
 	}
 

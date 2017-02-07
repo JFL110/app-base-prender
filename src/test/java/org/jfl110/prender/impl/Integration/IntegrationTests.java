@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jfl110.prender.impl.parse.DefaultParsingModule;
 import org.jfl110.prender.impl.render.DefaultRenderFilter;
 import org.jfl110.prender.impl.render.DefaultRenderingModule;
+import org.jfl110.prender.impl.resource.DefaultResourceSourceModule;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,7 +86,8 @@ public class IntegrationTests {
 		
 		injector = Guice.createInjector(
 				new DefaultRenderingModule(),
-				new DefaultParsingModule());
+				new DefaultParsingModule(),
+				new DefaultResourceSourceModule());
 		
 		when(filterConfig.getServletContext()).thenReturn(servletContext);
 		renderFilter = injector.getInstance(DefaultRenderFilter.class);

@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.ServletContext;
 
+import org.jfl110.prender.api.resources.InputStreamWithPath;
+
 /**
  * Service to parse HTML.
  *
@@ -11,7 +13,7 @@ import javax.servlet.ServletContext;
  */
 public interface HtmlParsingService {
 
-	RenderTag parse(String path, ServletContext servletContext) throws IOException;
+	RenderTag parse(InputStreamWithPath page, ServletContext servletContext) throws IOException;
 	
-	RenderTag parse(String path,ServletContext servletContext,HtmlParseOptions options) throws IOException;
+	RenderTag parse(InputStreamWithPath page,ServletContext servletContext,HtmlParseOptions options) throws IOException;
 }

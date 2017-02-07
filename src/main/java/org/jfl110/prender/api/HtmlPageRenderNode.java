@@ -1,19 +1,21 @@
 package org.jfl110.prender.api;
 
+import org.jfl110.prender.api.resources.ResourceSource;
+
 public final class HtmlPageRenderNode implements RenderNode{
 	
-	private final String pageName;
+	private final ResourceSource resourceSource;
 	
-	public static HtmlPageRenderNode htmlPage(String pageName){
-		return new HtmlPageRenderNode(pageName);
+	public static HtmlPageRenderNode htmlPage(ResourceSource resourceSource){
+		return new HtmlPageRenderNode(resourceSource);
 	}
 	
-	private HtmlPageRenderNode(String pageName){
-		this.pageName = pageName;
+	private HtmlPageRenderNode(ResourceSource resourceSource){
+		this.resourceSource = resourceSource;
 	}
 	
 	
-	public String pageName() {
-		return pageName;
+	public ResourceSource getPage() {
+		return resourceSource;
 	}	
 }

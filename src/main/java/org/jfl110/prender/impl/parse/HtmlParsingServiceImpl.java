@@ -18,6 +18,7 @@ import org.jfl110.prender.api.parse.ParseTransformation;
 import org.jfl110.prender.api.parse.RenderTag;
 import org.jfl110.prender.api.parse.RenderTagBuilder;
 import org.jfl110.prender.api.render.RenderNodeSpace;
+import org.jfl110.prender.api.resources.InputStreamWithPath;
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.BooleanAttribute;
 import org.jsoup.nodes.Comment;
@@ -49,17 +50,17 @@ class HtmlParsingServiceImpl implements HtmlParsingService {
 	}
 
 	@Override
-	public RenderTag parse(String path, ServletContext servletContext) throws IOException {
-		return parse(path, servletContext, HtmlParseOptions.parseOptions());
+	public RenderTag parse(InputStreamWithPath page, ServletContext servletContext) throws IOException {
+		return parse(page, servletContext, HtmlParseOptions.parseOptions());
 	}
 
 	@Override
-	public RenderTag parse(String path, ServletContext servletContext,HtmlParseOptions options) throws IOException {
+	public RenderTag parse(InputStreamWithPath page, ServletContext servletContext,HtmlParseOptions options) throws IOException {
 		Element doc = null;
 		try {
-			doc = jsoupParsingService.get().parseLocalFile(path,servletContext,options);
+			doc = jsoupParsingService.get().parseStream(page,servletContext,options);
 		} catch (IOException e) {
-			throw new IOException("Error reading document [" + path + "]", e);
+			throw new IOException("Error reading document [" + page.getPath() + "]", e);
 		}
 		
 		RenderTagBuilder rootTag = new RenderTagImpl();
