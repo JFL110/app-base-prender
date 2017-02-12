@@ -1,7 +1,5 @@
 package org.jfl110.prender.api.resources;
 
-import java.io.InputStream;
-
 import javax.servlet.ServletContext;
 
 /**
@@ -18,5 +16,5 @@ public interface ResourceSourceServiceResolver {
 	 * @param resourceSource the ResourceSource to transform
 	 * @param servletContext the ServletContex
 	 */
-	InputStream toInputStream(ResourceSource resourceSource,ServletContext servletContext);
+	Resource toInputStream(ResourceSource resourceSource,ServletContext servletContext);
 }

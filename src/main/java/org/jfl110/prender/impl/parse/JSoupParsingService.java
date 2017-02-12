@@ -6,7 +6,7 @@ import java.io.InputStream;
 import javax.servlet.ServletContext;
 
 import org.jfl110.prender.api.parse.HtmlParseOptions;
-import org.jfl110.prender.api.resources.InputStreamWithPath;
+import org.jfl110.prender.api.resources.Resource;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,7 +18,7 @@ import com.google.inject.Provider;
 @ImplementedBy(JSoupParsingService.JSoupParsingServiceImpl.class)
 interface JSoupParsingService {
 	
-	Element parseStream(InputStreamWithPath page, ServletContext context,HtmlParseOptions options) throws IOException;
+	Element parseStream(Resource page, ServletContext context,HtmlParseOptions options) throws IOException;
 	
 	class JSoupParsingServiceImpl implements JSoupParsingService{
 		
@@ -33,7 +33,7 @@ interface JSoupParsingService {
 
 		
 		@Override
-		public Element parseStream(InputStreamWithPath page, ServletContext context,HtmlParseOptions options) throws IOException {
+		public Element parseStream(Resource page, ServletContext context,HtmlParseOptions options) throws IOException {
 			configureDetaultOptions(options);
 			return options.isBodyOnly() ? parseBodyOnly(page.getInputStream(),page.getPath(),options) : parseWholeDocument(page.getInputStream(),page.getPath(),options);
 		}

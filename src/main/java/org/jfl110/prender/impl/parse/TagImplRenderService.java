@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.StringRenderNodes;
 import org.jfl110.prender.api.parse.RenderAttribute;
+import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderService;
 
 import com.google.common.collect.Lists;
@@ -39,7 +40,7 @@ public class TagImplRenderService implements RenderService<RenderTagImpl> {
 	}
 
 	@Override
-	public Collection<RenderNode> render(RenderTagImpl tag, HttpServletRequest requestData,ServletContext context) {
+	public Collection<RenderNode> render(RenderTagImpl tag,RenderMap renderMap,  HttpServletRequest requestData,ServletContext context) {
 
 		Collection<RenderNode> output = newArrayList();
 

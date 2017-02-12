@@ -24,6 +24,7 @@ public class DefaultParsingModule extends AbstractModule {
 		transformations.addBinding().to(CssInlineParseTransformation.class);
 		transformations.addBinding().to(CssCompressionParseTransformation.class);
 		transformations.addBinding().to(JSInlineParseTransformation.class);
+		transformations.addBinding().to(DefaultPlaceholderParseTransformation.class);
 		
 		bind(CssCompressor.class).to(YUICssCompressor.class);
 	}

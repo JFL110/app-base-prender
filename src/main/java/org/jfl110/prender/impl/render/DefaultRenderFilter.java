@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.logging.Logger;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletContext;
@@ -20,6 +19,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 
 import org.jfl110.prender.api.RenderNode;
 import org.jfl110.prender.api.RenderStream;
+import org.jfl110.prender.api.render.RenderFilter;
 import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderMapService;
 import org.jfl110.prender.api.render.RenderServiceResolver;
@@ -30,7 +30,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 @Singleton
-public class DefaultRenderFilter implements Filter{
+class DefaultRenderFilter implements RenderFilter{
 	private static Logger logger = Logger.getLogger(DefaultRenderFilter.class.getSimpleName());
 
 	private final Provider<RenderMapService> renderMapService;
@@ -97,26 +97,29 @@ public class DefaultRenderFilter implements Filter{
 		}
 
 		try {
-			write(Collections.<RenderNode> singleton(renderMap.get().rootNode()), response.getWriter(),
-					(HttpServletRequest) request, filterConfig.getServletContext());
+			write(Collections.<RenderNode> singleton(renderMap.get().rootNode()),
+					renderMap.get(),
+					response.getWriter(),
+					(HttpServletRequest) request,
+					filterConfig.getServletContext());
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private void write(Collection<RenderNode> nodes, PrintWriter writer, HttpServletRequest request,ServletContext context) throws IOException {
+	private void write(Collection<RenderNode> nodes,RenderMap renderMap,  PrintWriter writer, HttpServletRequest request,ServletContext context) throws IOException {
 		for (RenderNode node : nodes) {
-			writeNode(node, writer, request,context);
+			writeNode(node,renderMap,writer, request,context);
 		}
 	}
 
-	private void writeNode(RenderNode node, PrintWriter writer, HttpServletRequest request,ServletContext context) throws IOException {
+	private void writeNode(RenderNode node,RenderMap renderMap,  PrintWriter writer, HttpServletRequest request,ServletContext context) throws IOException {
 		if (node instanceof RenderStream) {
 			((RenderStream) node).write(writer);
 			return;
 		}
 		
-		write(renderServiceResolver.get().render(node, request, context), writer, request,context);
+		write(renderServiceResolver.get().render(node,renderMap, request, context),renderMap, writer, request,context);
 	}
 	
 	private FilterConfig filterConfig;

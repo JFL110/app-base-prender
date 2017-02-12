@@ -7,16 +7,16 @@ import java.io.InputStream;
  *
  * @author JFL110
  */
-public class InputStreamWithPath {
+public class Resource {
 
 	private final String path;
 	private final InputStream inputStream;
 	
-	public static InputStreamWithPath inputStreamWithPath(String path,InputStream inputStream){
-		return new InputStreamWithPath(path,inputStream);
+	public static Resource resource(String path,InputStream inputStream){
+		return new Resource(path,inputStream);
 	}
 	
-	private InputStreamWithPath(String path,InputStream inputStream){
+	private Resource(String path,InputStream inputStream){
 		this.path = path;
 		this.inputStream = inputStream;
 	}

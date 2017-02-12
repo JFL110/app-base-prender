@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderService;
 import org.jfl110.prender.api.render.RenderServiceResolver;
 import org.junit.Before;
@@ -35,7 +36,7 @@ public class TestDefaultRenderServiceResolverGuice {
 		}
 
 		@Override
-		public Collection<RenderNode> render(RenderNodeType1 node, HttpServletRequest requestData,ServletContext context) {
+		public Collection<RenderNode> render(RenderNodeType1 node,RenderMap renderMap, HttpServletRequest requestData,ServletContext context) {
 			return null;
 		}
 	}

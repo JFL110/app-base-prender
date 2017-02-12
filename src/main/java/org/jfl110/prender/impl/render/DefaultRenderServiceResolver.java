@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderService;
 import org.jfl110.prender.api.render.RenderServiceResolver;
 
@@ -53,8 +54,8 @@ class DefaultRenderServiceResolver implements RenderServiceResolver {
 	}
 
 	@Override
-	public <T extends RenderNode> Collection<RenderNode> render(T node, HttpServletRequest requestData,ServletContext context) throws IOException {
+	public <T extends RenderNode> Collection<RenderNode> render(T node, RenderMap renderMap,HttpServletRequest requestData,ServletContext context) throws IOException {
 		// TODO stackoverflow protection
-		return get(node.getClass()).render(node, requestData,context);
+		return get(node.getClass()).render(node, renderMap,requestData,context);
 	}
 }

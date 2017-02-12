@@ -1,11 +1,11 @@
 package org.jfl110.prender.impl.resource;
 
-import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
 
+import org.jfl110.prender.api.resources.Resource;
 import org.jfl110.prender.api.resources.ResourceSource;
 import org.jfl110.prender.api.resources.ResourceSourceService;
 import org.jfl110.prender.api.resources.ResourceSourceServiceResolver;
@@ -31,7 +31,7 @@ class DefaultResourceSourceServiceResolver implements ResourceSourceServiceResol
 	}
 	 
 	@Override
-	public InputStream toInputStream(ResourceSource resourceSource,ServletContext servletContext) {
+	public Resource toInputStream(ResourceSource resourceSource,ServletContext servletContext) {
 		return getService(resourceSource).toInputStream(resourceSource, servletContext);
 	}
 	

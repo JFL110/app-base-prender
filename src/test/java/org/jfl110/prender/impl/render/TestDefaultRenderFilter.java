@@ -62,7 +62,7 @@ public class TestDefaultRenderFilter {
 		
 		filter.doFilter(request, response, filterChain);
 		
-		when(renderServiceResolver.render(renderStream,request,servletContext)).thenReturn(Collections.<RenderNode>singleton(renderStream));
+		when(renderServiceResolver.render(renderStream,renderMap,request,servletContext)).thenReturn(Collections.<RenderNode>singleton(renderStream));
 		verify(renderStream).write(printWriter);
 	}
 }

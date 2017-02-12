@@ -12,6 +12,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderService;
 import org.jfl110.prender.api.render.RenderServiceResolver;
 import org.junit.Before;
@@ -69,15 +70,15 @@ public class TestDefaultRenderServiceResolver {
 		HttpServletRequest httpServletRequest = mock(HttpServletRequest.class);
 		ServletContext servletContext = mock(ServletContext.class);
 		RenderNodeType1 renderNode = new RenderNodeType1();
+		RenderMap renderMap = mock(RenderMap.class);
 		
 		// When
 		Collection<RenderNode> renderOutput = Lists.newArrayList();
 		
 		// Then
-		when(renderService1.render(renderNode, httpServletRequest, servletContext))
-		.thenReturn(renderOutput);
+		when(renderService1.render(renderNode,renderMap, httpServletRequest, servletContext)).thenReturn(renderOutput);
 		
-		assertEquals(renderOutput,service.render(renderNode, httpServletRequest, servletContext));
+		assertEquals(renderOutput,service.render(renderNode,renderMap, httpServletRequest, servletContext));
 	}
 
 

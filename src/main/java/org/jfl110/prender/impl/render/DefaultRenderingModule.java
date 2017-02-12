@@ -1,6 +1,7 @@
 package org.jfl110.prender.impl.render;
 
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.render.RenderFilter;
 import org.jfl110.prender.api.render.RenderMapService;
 import org.jfl110.prender.api.render.RenderService;
 import org.jfl110.prender.api.render.RenderServiceResolver;
@@ -19,6 +20,7 @@ public class DefaultRenderingModule extends AbstractModule{
 
 	@Override
 	protected void configure() {
+		bind(RenderFilter.class).to(DefaultRenderFilter.class);
 		bind(RenderMapService.class).to(DefaultRenderMapService.class);
 		bind(RenderServiceResolver.class).to(DefaultRenderServiceResolver.class);
 		
@@ -29,6 +31,8 @@ public class DefaultRenderingModule extends AbstractModule{
 		// Defaults
 		multibinder.addBinding().to(CollectionRenderService.class);
 		multibinder.addBinding().to(HtmlPageRenderService.class);
+		multibinder.addBinding().to(HtmlBodyRenderService.class);
 		multibinder.addBinding().to(TagImplRenderService.class);
+		multibinder.addBinding().to(PlaceholderRenderService.class);
 	}
 }

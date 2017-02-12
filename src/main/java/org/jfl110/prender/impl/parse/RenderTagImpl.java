@@ -94,4 +94,9 @@ final class RenderTagImpl implements RenderTag, RenderTagBuilder {
 		attributes.add(new RenderAttributeImpl(key));
 		return this;
 	}
+	
+	@Override
+	public String toString() {
+		return "<"+tagName+" ...>...</>";
+	}
 }

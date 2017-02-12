@@ -100,6 +100,19 @@ public class RenderTags {
 		 return Optional.absent();
 	}
 	
+	
+	/**
+	 * Finds first attribute matching the supplied predicate
+	 */
+	public static Optional<RenderAttribute> findFirstAttribute(final RenderTag root, final Predicate<RenderAttribute> matching){
+		 for(RenderAttribute attribute : root.attributes()){
+			 if(matching.apply(attribute)){
+				 return Optional.of(attribute);
+			 }
+		 }
+		 return Optional.absent();
+	}
+	
 	/**
 	 * Matches tags by name
 	 */

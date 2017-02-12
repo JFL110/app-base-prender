@@ -18,5 +18,5 @@ public interface RenderService<T extends RenderNode> {
 	
 	Class<T> getRenderNodeType();
 
-	Collection<RenderNode> render(T node, HttpServletRequest requestData,ServletContext context) throws IOException;
+	Collection<RenderNode> render(T node, RenderMap renderMap,HttpServletRequest requestData,ServletContext context) throws IOException;
 }

@@ -25,5 +25,5 @@ public interface RenderServiceResolver {
 	/**
 	 * Convenience method to call render on the render service
 	 */
-	<T extends RenderNode> Collection<RenderNode> render(T node, HttpServletRequest requestData,ServletContext context) throws IOException;
+	<T extends RenderNode> Collection<RenderNode> render(T node, RenderMap renderMap, HttpServletRequest requestData,ServletContext context) throws IOException;
 }

@@ -19,8 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jfl110.prender.api.render.RenderFilter;
 import org.jfl110.prender.impl.parse.DefaultParsingModule;
-import org.jfl110.prender.impl.render.DefaultRenderFilter;
 import org.jfl110.prender.impl.render.DefaultRenderingModule;
 import org.jfl110.prender.impl.resource.DefaultResourceSourceModule;
 import org.junit.Before;
@@ -72,7 +72,7 @@ public class IntegrationTests {
 	@Parameter(value = 1)
 	public IntegrationTestCase testCase;
 	
-	private DefaultRenderFilter renderFilter;
+	private RenderFilter renderFilter;
 	private Injector injector;
 	
 	private final StringWriter outputStringWriter = new StringWriter();
@@ -90,7 +90,7 @@ public class IntegrationTests {
 				new DefaultResourceSourceModule());
 		
 		when(filterConfig.getServletContext()).thenReturn(servletContext);
-		renderFilter = injector.getInstance(DefaultRenderFilter.class);
+		renderFilter = injector.getInstance(RenderFilter.class);
 		renderFilter.init(filterConfig);
 		
 		when(response.getWriter()).thenReturn(new PrintWriter(outputStringWriter));

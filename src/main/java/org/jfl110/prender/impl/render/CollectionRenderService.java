@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.CollectionRenderNode;
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderNodeSpace;
 import org.jfl110.prender.api.render.RenderService;
 
@@ -20,7 +21,7 @@ class CollectionRenderService implements RenderService<CollectionRenderNode> {
 	}
 
 	@Override
-	public Collection<RenderNode> render(CollectionRenderNode node, HttpServletRequest requestData,ServletContext context) {
+	public Collection<RenderNode> render(CollectionRenderNode node,RenderMap renderMap, HttpServletRequest requestData,ServletContext context) {
 		return Lists.transform(Lists.newArrayList(node.children()), RenderNodeSpace.getNodes());
 	}
 }
