@@ -28,7 +28,8 @@ public class TestServletContextResourceSourceService {
 		InputStream inputStream= mock(InputStream.class);
 		when(servletContext.getResourceAsStream(source.getPath())).thenReturn(inputStream);
 		
-		assertEquals(inputStream,service.toInputStream(source, servletContext));
+		assertEquals(inputStream,service.toInputStream(source, servletContext).getInputStream());
+		assertEquals(source.getPath(),service.toInputStream(source, servletContext).getPath());
 		assertEquals(ServletContextResourceSource.class,service.getResourceSourceType());
 	}
 }
