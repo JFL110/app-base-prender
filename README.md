@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/JFL110/app-base-prender.svg?branch=master)](https://travis-ci.org/JFL110/app-base-prender)
 [![Coverage Status](https://coveralls.io/repos/github/JFL110/app-base-prender/badge.svg?branch=master)](https://coveralls.io/github/JFL110/app-base-prender?branch=master)
 
-See [examples](https://github.com/JFL110/app-base-examples)
+See [examples](https://github.com/JFL110/app-base-examples).
 
 ## Parse
 Stage one is parsing. HTML and other content is read and transformed to a tree structure of _RenderNodes_ that can represent either layout elements, such as a HTML tag, or dyanmic elements, such as a users profile picture. This model is then cached and used across requests.
