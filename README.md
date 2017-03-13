@@ -5,7 +5,7 @@
 See [examples](https://github.com/JFL110/app-base-examples).
 
 ## Parse
-Stage one is parsing. HTML and other content is read and transformed to a tree structure of _RenderNodes_ that can represent either layout elements, such as a HTML tag, or dyanmic elements, such as a users profile picture. This model is then cached and used across requests.
+Stage one is parsing. HTML and other content is read and transformed to a tree structure of _RenderNodes_ that can represent either layout elements, such as a HTML tag, or dyanmic elements, such as a user's profile picture. This model is then cached and used across requests.
 
 #### Inlining
 Mark _script_ or _link_ tags with an _inline_ attribute to pull the content into the same page and reduce client requests for small resources. 
