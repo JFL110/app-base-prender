@@ -52,7 +52,8 @@ public class IntegrationTests {
 				IntegrationTestCases.emptyPage(),
 				IntegrationTestCases.cssInline1(),
 				IntegrationTestCases.jsInline1(),
-				IntegrationTestCases.cssInlineAndCompress()
+				IntegrationTestCases.cssInlineAndCompress(),
+				IntegrationTestCases.optionalPlaceholder()
 				);
 	}
 

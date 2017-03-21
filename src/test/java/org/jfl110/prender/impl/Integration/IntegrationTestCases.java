@@ -41,4 +41,13 @@ class IntegrationTestCases {
 				.withResource("script.js", "function doSomething(){}")
 				.expect("<html><head><script async>function doSomething(){}</script></head><body><h1>HELLO</h1></body></html>");
 	}
+	
+	
+	static IntegrationTestCase optionalPlaceholder(){
+		return new IntegrationTestCase()
+				.titled("Optional placeholder")
+				.forRootNode(htmlPage(servletContextResource("index.html")))
+				.withResource("index.html", "<html><head></head><body><div data-optional-placeholder-key=\"a-key\">DEFAULT VALUE</div></body></html>")
+				.expect("<html><head></head><body><div>DEFAULT VALUE</div></body></html>");
+	}
 }
