@@ -32,7 +32,8 @@ import com.google.inject.Singleton;
 @Singleton
 class DefaultRenderFilter implements RenderFilter{
 	private static Logger logger = Logger.getLogger(DefaultRenderFilter.class.getSimpleName());
-
+	
+	private FilterConfig filterConfig;
 	private final Provider<RenderMapService> renderMapService;
 	private final Provider<RenderServiceResolver> renderServiceResolver;
 
@@ -121,8 +122,6 @@ class DefaultRenderFilter implements RenderFilter{
 		
 		write(renderServiceResolver.get().render(node,renderMap, request, context),renderMap, writer, request,context);
 	}
-	
-	private FilterConfig filterConfig;
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
