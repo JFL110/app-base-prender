@@ -37,7 +37,8 @@ class RenderMapImpl implements RenderMap {
 	}
 
 	@Override
-	public void putPlaceholderValue(String key, RenderNode renderNode) {
+	public RenderMap putPlaceholderValue(String key, RenderNode renderNode) {
 		placeholderMap.put(key, renderNode);
+		return this;
 	}
 }

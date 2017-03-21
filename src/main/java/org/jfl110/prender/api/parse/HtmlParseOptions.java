@@ -17,7 +17,6 @@ public class HtmlParseOptions {
 		return new HtmlParseOptions();
 	}
 	
-
 	public HtmlParseOptions withCharset(String charset) {
 		this.charset = charset;
 		return this;

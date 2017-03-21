@@ -23,8 +23,14 @@ public class PlaceholderRenderService implements RenderService<PlaceholderRender
 	}
 
 	@Override
-	public Collection<RenderNode> render(PlaceholderRenderNode placeholderNode,RenderMap renderMap,  HttpServletRequest requestData,ServletContext context) throws IOException {
+	public Collection<RenderNode> render(PlaceholderRenderNode placeholderNode,RenderMap renderMap,HttpServletRequest requestData,ServletContext context) throws IOException {
 		Optional<RenderNode> replaceValue = renderMap.placeHolderValue(placeholderNode.key());
-		return replaceValue.isPresent() ? Collections.singleton(replaceValue.get()) : Collections.<RenderNode>emptyList();
+		return replaceValue.isPresent() ? 
+				Collections.singleton(replaceValue.get()) : 
+					placeholderNode.optionalOriginal().isPresent() ? 
+					Collections.<RenderNode>singleton(placeholderNode.optionalOriginal().get()) : 
+					Collections.<RenderNode>emptyList();
 	}
+	
+	
 }

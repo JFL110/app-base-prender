@@ -17,7 +17,7 @@ public interface RenderMap {
 	
 	Optional<RenderNode> placeHolderValue(String key);
 	
-	void putPlaceholderValue(String key,RenderNode renderNode);
+	RenderMap putPlaceholderValue(String key,RenderNode renderNode);
 	
 	RenderNode rootNode();
 }

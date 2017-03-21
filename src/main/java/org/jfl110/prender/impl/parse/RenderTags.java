@@ -41,6 +41,9 @@ public class RenderTags {
 	}
 	
 	
+	/**
+	 * Copies a list of attributes
+	 */
 	public static Collection<RenderAttribute> copyOfAttributes(Collection<RenderAttribute> attributes){
 		return Lists.newArrayList(
 				Iterables.transform(attributes, new Function<RenderAttribute,RenderAttribute>(){
@@ -49,6 +52,20 @@ public class RenderTags {
 						return attribute(attributeToCopy.name(),attributeToCopy.value());
 					}
 				}));
+	}
+	
+	
+	/**
+	 * Creates a shallow copy of a tag, including attributes based on a predicate.
+	 */
+	public static RenderTag shallowCopyTag(RenderTag renderTag,Predicate<RenderAttribute> attributeInclusionPredicate){
+		return RenderTags
+				.tag(renderTag.tagName())
+				.addAttributes(
+					Iterables.filter(
+							copyOfAttributes(renderTag.attributes()),attributeInclusionPredicate))
+				.addChildSpaces(renderTag.children())
+				.build();
 	}
 	
 	

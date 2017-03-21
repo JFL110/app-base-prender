@@ -31,7 +31,6 @@ public class DefaultRenderingModule extends AbstractModule{
 		// Defaults
 		multibinder.addBinding().to(CollectionRenderService.class);
 		multibinder.addBinding().to(HtmlPageRenderService.class);
-		multibinder.addBinding().to(HtmlBodyRenderService.class);
 		multibinder.addBinding().to(TagImplRenderService.class);
 		multibinder.addBinding().to(PlaceholderRenderService.class);
 	}

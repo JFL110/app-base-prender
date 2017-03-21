@@ -36,8 +36,6 @@ class HtmlParsingServiceImpl implements HtmlParsingService {
 	
 	private static Logger logger = Logger.getLogger(HtmlParsingServiceImpl.class.getSimpleName());
 	private static final int MAX_TRANSFORM_PASSES = 100;
-	
-	// TODO Caching
 
 	private final Provider<JSoupParsingService> jsoupParsingService;
 	private final Set<ParseTransformation> postParseTransformations;
@@ -68,6 +66,8 @@ class HtmlParsingServiceImpl implements HtmlParsingService {
 		
 		addChildNodes(rootTag,doc.childNodes(),servletContext);
 
+		page.getInputStream().close();
+		
 		return rootTag.build();
 	}
 	

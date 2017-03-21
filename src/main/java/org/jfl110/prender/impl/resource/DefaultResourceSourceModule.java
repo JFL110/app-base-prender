@@ -23,6 +23,7 @@ public class DefaultResourceSourceModule extends AbstractModule {
 					Multibinder.newSetBinder(binder(),new TypeLiteral<ResourceSourceService<? extends ResourceSource>>(){{}});
 		
 		multibinder.addBinding().to(ServletContextResourceSourceService.class);
+		multibinder.addBinding().to(URLResourceSourceService.class);
 	}
 
 }

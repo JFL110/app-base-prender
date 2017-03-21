@@ -1,6 +1,8 @@
 package org.jfl110.prender.impl.render;
 
 
+import static org.jfl110.prender.api.parse.HtmlParseOptions.parseOptions;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jfl110.prender.api.HtmlPageRenderNode;
 import org.jfl110.prender.api.RenderNode;
+import org.jfl110.prender.api.parse.HtmlParseOptions;
 import org.jfl110.prender.api.parse.HtmlParsingService;
 import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.api.render.RenderService;
@@ -37,7 +40,13 @@ public class HtmlPageRenderService implements RenderService<HtmlPageRenderNode>{
 
 	@Override
 	public Collection<RenderNode> render(HtmlPageRenderNode node,RenderMap renderMap,  HttpServletRequest requestData,ServletContext context) throws IOException {
-		return Collections.<RenderNode>singleton(htmlParsingService.get().parse(resourceSourceServiceResolver.get().toInputStream(node.getPage(), context), context));
+		HtmlParseOptions parseOptions = parseOptions();
+		
+		if(node.isBodyOnly()){
+			parseOptions.bodyOnly();
+		}
+		
+		return Collections.<RenderNode>singleton(htmlParsingService.get().parse(resourceSourceServiceResolver.get().toInputStream(node.getPage(), context), context,parseOptions));
 	}
 
 }
