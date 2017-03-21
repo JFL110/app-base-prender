@@ -30,7 +30,7 @@ class IntegrationTestCases {
 		return new IntegrationTestCase()
 			.titled("Css Inline And Compress")
 			.forRootNode(htmlPage(servletContextResource("index.html")))
-			.withResource("index.html", "<html><head><link inline type=\"text/css\" rel=\"stylesheet\" href=\"style.css\" /></style></head><body></body></html>")
+			.withResource("index.html", "<html><head><link data-inline type=\"text/css\" rel=\"stylesheet\" href=\"style.css\" /></style></head><body></body></html>")
 			.withResource("style.css", "body{ margin:0px; } div\n{height  : 2px;\n}\n")
 			.expect("<html><head><style type=\"text/css\">/*C*/body{margin:0;}div{height:2px;}</style></head><body></body></html>");
 	}
@@ -40,7 +40,7 @@ class IntegrationTestCases {
 		return new IntegrationTestCase()
 				.titled("JS Inline 1")
 				.forRootNode(htmlPage(servletContextResource("index.html")))
-				.withResource("index.html", "<html><head><script src=\"script.js\" inline async/></head><body><h1>HELLO</h1></body></html>")
+				.withResource("index.html", "<html><head><script src=\"script.js\" data-inline async/></head><body><h1>HELLO</h1></body></html>")
 				.withResource("script.js", "function doSomething(){}")
 				.expect("<html><head><script async>function doSomething(){}</script></head><body><h1>HELLO</h1></body></html>");
 	}

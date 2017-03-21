@@ -49,15 +49,15 @@ public class TestJSInlineParseTransformation {
 	private final String srcPath = "someSrc.js";
 	private final String src = "function(){}";
 
-	private final RenderTag matchingTag1 = tag("script").addAttribute("src", srcPath).addAttribute("inline").build();
-	private final RenderTag matchingTag2 = tag("SCRIPT").addAttribute("src", srcPath).addAttribute("inline").build();
-	private final RenderTag matchingTag3 = tag("SCRIPT").addAttribute("src", srcPath).addAttribute("INLINE").build();
-	private final RenderTag matchingTag4 = tag("SCRIPT").addAttribute("SRC", srcPath).addAttribute("inline").build();
-	private final RenderTag matchingTag5WithAttributes = tag("script").addAttribute("src", srcPath).addAttribute("inline").addAttribute("defer").build();
+	private final RenderTag matchingTag1 = tag("script").addAttribute("src", srcPath).addAttribute("data-inline").build();
+	private final RenderTag matchingTag2 = tag("SCRIPT").addAttribute("src", srcPath).addAttribute("data-inline").build();
+	private final RenderTag matchingTag3 = tag("SCRIPT").addAttribute("src", srcPath).addAttribute("data-INLINE").build();
+	private final RenderTag matchingTag4 = tag("SCRIPT").addAttribute("SRC", srcPath).addAttribute("data-inline").build();
+	private final RenderTag matchingTag5WithAttributes = tag("script").addAttribute("src", srcPath).addAttribute("data-inline").addAttribute("defer").build();
 
 	private final RenderTag nonMatchingTag1 = tag("img").addAttribute("src", srcPath).addAttribute("inline").build();
 	private final RenderTag nonMatchingTag2 = tag("script").addAttribute("src", srcPath).build();
-	private final RenderTag nonMatchingTag3 = tag("script").addAttribute("inline").build();
+	private final RenderTag nonMatchingTag3 = tag("script").addAttribute("data-inline").build();
 	private final RenderTag nonMatchingTag4 = tag("script").addAttribute("src", srcPath)
 												.addAttribute("inline").addChild(tag("x").build()).build();
 

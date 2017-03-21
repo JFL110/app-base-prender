@@ -29,7 +29,7 @@ class CssInlineParseTransformation implements ParseTransformation{
 	private static Logger logger = Logger.getLogger(CssInlineParseTransformation.class.getSimpleName());
 
 	private static final String CSS_LINK_TAG_NAME = "link";
-	private static final String INLINE_ATTRIBUTE_NAME = "inline";
+	private static final String INLINE_ATTRIBUTE_NAME = "data-inline";
 	private static final String REL_ATTRIBUTE_NAME = "rel";
 	private static final String HREF_ATTRIBUTE_NAME = "href";
 	private static final String EXPECTED_REL_VALUE = "stylesheet";

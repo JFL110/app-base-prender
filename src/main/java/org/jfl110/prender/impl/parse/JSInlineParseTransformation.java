@@ -30,7 +30,7 @@ class JSInlineParseTransformation implements ParseTransformation {
 
 	private static final String JS_SCRIPT_TAG_NAME = "script";
 	private static final String SRC_ATTRIBUTE_NAME = "src";
-	private static final String INLINE_ATTRIBUTE_NAME = "inline";
+	private static final String INLINE_ATTRIBUTE_NAME = "data-inline";
 
 	private static final String CACHE_NAME = "JS_INLINE";
 
