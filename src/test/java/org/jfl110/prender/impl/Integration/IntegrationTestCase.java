@@ -25,6 +25,11 @@ class IntegrationTestCase {
 		this.rootMap = renderMap(rootMap);
 		return this;
 	}
+	
+	IntegrationTestCase forMap(RenderMap renderMap) {
+		this.rootMap = renderMap;
+		return this;
+	}
 
 	IntegrationTestCase withResource(String address, String content) {
 		resourceMap.put(address, content);

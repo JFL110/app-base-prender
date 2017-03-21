@@ -1,7 +1,10 @@
 package org.jfl110.prender.impl.Integration;
 
 import static org.jfl110.prender.api.HtmlPageRenderNode.htmlPage;
+import static org.jfl110.prender.api.render.RenderMaps.renderMap;
 import static org.jfl110.prender.api.resources.ServletContextResourceSources.servletContextResource;
+
+import org.jfl110.prender.api.StringRenderNodes;
 
 class IntegrationTestCases {
 
@@ -46,8 +49,10 @@ class IntegrationTestCases {
 	static IntegrationTestCase optionalPlaceholder(){
 		return new IntegrationTestCase()
 				.titled("Optional placeholder")
-				.forRootNode(htmlPage(servletContextResource("index.html")))
-				.withResource("index.html", "<html><head></head><body><div data-optional-placeholder-key=\"a-key\">DEFAULT VALUE</div></body></html>")
-				.expect("<html><head></head><body><div>DEFAULT VALUE</div></body></html>");
+				.forMap(
+						renderMap(htmlPage(servletContextResource("index.html")))
+						.putPlaceholderValue("b-key", StringRenderNodes.string("REPLACEMENT VALUE")))
+				.withResource("index.html", "<html><head></head><body><div data-optional-placeholder-key=\"b-key\">DEFAULT VALUE</div><div data-optional-placeholder-key=\"a-key\"><b>DEFAULT <i>VALUE</i></b></div></body></html>")
+				.expect("<html><head></head><body>REPLACEMENT VALUE<div><b>DEFAULT <i>VALUE</i></b></div></body></html>");
 	}
 }
