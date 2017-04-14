@@ -3,6 +3,7 @@ package org.jfl110.prender.impl.serve;
 import java.util.Set;
 
 import javax.servlet.Filter;
+import javax.servlet.http.HttpServlet;
 
 import org.jfl110.prender.api.HtmlPageRenderNode;
 import org.jfl110.prender.api.RenderNode;
@@ -19,6 +20,7 @@ import com.google.inject.servlet.ServletModule;
 class ServeBuilderImpl extends ServletModule implements ServeBuilder<ServeBuilder<?>> {
 	
 	private Supplier<RenderMap> renderMapFunction;
+	private Class<? extends HttpServlet> servletClazz;
 	private final String path;
 	private final Set<Class<? extends Filter>> filters = Sets.newHashSet();
 	
@@ -41,6 +43,11 @@ class ServeBuilderImpl extends ServletModule implements ServeBuilder<ServeBuilde
 		if(renderMapFunction != null){
 			throw new IllegalArgumentException("RenderMap function already specified");
 		}
+		
+		if(servletClazz != null){
+			throw new IllegalArgumentException("Cannot specify RenderMap and HttpServlet");
+		}
+		
 		renderMapFunction = Suppliers.ofInstance(renderMap);
 		return this;
 	}
@@ -49,6 +56,18 @@ class ServeBuilderImpl extends ServletModule implements ServeBuilder<ServeBuilde
 	@Override
 	public ServeBuilder<?> through(Class<? extends javax.servlet.Filter> filterClazz) {
 		filters.add(filterClazz);
+		return this;
+	}
+	
+
+	@Override
+	public ServeBuilder<?> with(Class<? extends HttpServlet> servletClazz) {
+		
+		if(renderMapFunction != null){
+			throw new IllegalArgumentException("Cannot specify RenderMap and HttpServlet");
+		}
+		
+		this.servletClazz = servletClazz;
 		return this;
 	}
 
@@ -60,7 +79,12 @@ class ServeBuilderImpl extends ServletModule implements ServeBuilder<ServeBuilde
 		}
 		
 		filter(path).through(RenderFilter.class);
-		serve(path).with(new PageServletServlet(renderMapFunction));
+		
+		if(servletClazz == null){
+			serve(path).with(new PageServletServlet(renderMapFunction));
+		}else{
+			serve(path).with(servletClazz);
+		}
+		
 	}
-
 }
