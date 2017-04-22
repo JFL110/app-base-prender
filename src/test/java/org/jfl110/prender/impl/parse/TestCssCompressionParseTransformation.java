@@ -34,9 +34,9 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import com.google.appengine.repackaged.com.google.common.collect.Iterables;
-import com.google.appengine.repackaged.com.google.common.collect.Lists;
 import com.google.common.base.Optional;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Tests CssCompressionParseTransformation
