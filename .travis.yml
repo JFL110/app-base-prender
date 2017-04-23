@@ -1,9 +1,4 @@
 language: java
 
-# blocklist
-branches:
-  only:
-  - master
-
 after_success:
 - ./gradlew jacocoTestReport coveralls
