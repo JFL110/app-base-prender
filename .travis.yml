@@ -1,3 +1,5 @@
+# We don't want to build this branch
+# Need to restate this here for some reason
 branches:
-  only:
-    -master
+  except:
+    -maven-repo
