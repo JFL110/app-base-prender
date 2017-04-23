@@ -11,7 +11,7 @@ Stage one is parsing. HTML and other content is read and transformed to a tree s
 Mark _script_ or _link_ tags with an _inline_ attribute to pull the content into the same page and reduce client requests for small resources. 
 
 #### Compression
-All CSS and JS will be smooshed using the [YUI compressor](http://yui.github.io/yuicompressor/).
+All CSS will be smooshed using the [YUI compressor](http://yui.github.io/yuicompressor/).
 
 #### Placeholders
 Any tag with an _data-placeholder-key_ attribute or any _x:placeholder_ tag with a _key_ attribute will be replaced with a placeholder node. These can then be swapped with dynamic values on a per request basis.
